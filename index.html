@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="uft-8">
+    <title>Abortion in the United States</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="js/themes/grid.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+
+<body>
+
+  <article>
+    <h1>Abortion in the United States</h1>
+
+    <p>Abortion is a hot topic across the United States. In recent years, abortion providers such as Planned Parenthood have been under constant scrutinity and attack by politicians and conservative groups. Every month it seems, legislaters are writing up new bills to restrict access to abortive services and overall push public opinion against abortion. </p>
+
+    <p> Below, Figure A demonstrates that lawmakers and anti-abortion groups have been successful at changing public opinion against abortion, particularly in the Southern region of the United States. However, Figure B appears to tell a different story. In spite of rallying anti-abortion supporters in the South, these efforts have been fruitless at preventing the procedures themselves.</p>
+
+</article>
+
+
+
+<div id="chartOne"></div>
+
+<div id="chartTwo"></div>
+
+
+
+<script>
+
+//first chart
+
+$(function () {
+    $('#chartOne').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Fig. A: The Morality of Having an Abortion'
+        },
+        subtitle: {
+            text: 'Source: Pew Research Center'
+        },
+        xAxis: {
+            categories: [
+                'Male',
+                'Female',
+                'Northeast',
+                'South',
+                'Midwest',
+                'West'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '% of respondents'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Morally Unacceptable',
+            data: [54, 50, 44, 61, 53, 42]
+
+        }, {
+            name: 'Morally Acceptable',
+            data: [13, 11, 16, 8, 11, 16]
+
+        }, {
+            name: 'Not a moral issue',
+            data: [21, 24, 26, 18, 24, 28]
+
+        }, {
+            name: 'It depends',
+            data: [10, 12, 14, 9, 11, 11]
+
+        },{
+            name: 'Not sure',
+            data: [2, 3, 0, 4, 1, 3]
+
+        }]
+    });
+});
+
+
+//second chart
+
+$(function () {
+
+    $(document).ready(function () {
+
+        // Build the chart
+        $('#chartTwo').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Fig. B: Percentage of Total Abortion Procedures by Region'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: "% Of Total Abortion Procedures",
+                colorByPoint: true,
+                data: [{
+                    name: "North",
+                    y: 28.98
+                }, {
+                    name: "South",
+                    y: 41.46,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: "Midwest",
+                    y: 19.27
+                }, {
+                    name: "West",
+                    y: 10.29
+                }]
+            }]
+        });
+    });
+});
+</script>
+
+<p>Source for figure A is the <a href="http://www.pewsocialtrends.org/files/2010/10/Morality.pdf">Pew Center of Research.</a></p>
+<p>Source for figure be is the <a href="http://www.cdc.gov/mmwr/preview/mmwrhtml/ss6311a1.htm?s_cid=ss6311a1_w">Center for Disease Control and Prevention.</a></p>
+
+<footer>By Sara Nettle</footer>
+
+
+</body>
+
+</html>
